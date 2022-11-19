@@ -17,10 +17,14 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
-Route::get('/dashboard', function() {
-    return view('admin.dashboard');
-});
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//if is admin and authenticate user, then return to dashboard
+Route::group(['middleware' => ['auth', 'isAdmin']], function() {
+    Route::get('/dashboard', function() {
+        return view('admin.dashboard');
+    });
+});

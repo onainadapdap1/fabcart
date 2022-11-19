@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\RegisteredController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +24,19 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //if is admin and authenticate user, then return to dashboard
-Route::group(['middleware' => ['auth', 'isAdmin']], function() {
-    Route::get('/dashboard', function() {
+Route::group(['middleware' => ['auth', 'isAdmin']], function () {
+    Route::get('/dashboard', function () {
         return view('admin.dashboard');
+    });
+
+    Route::get('/registered-user', [RegisteredController::class, 'index']);
+    Route::get('/role-edit/{id}', [RegisteredController::class, 'edit']);
+    Route::put('/role-update/{id}', [RegisteredController::class, 'updaterole']);
+});
+
+// if is vendor and authenticate user, then return to vendor-dashboard
+Route::group(['middleware' => ['auth', 'isVendor']], function () {
+    Route::get('/vendor-dashboard', function () {
+        return view('vendor.dashboard');
     });
 });

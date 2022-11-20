@@ -25,6 +25,21 @@
                 <div class="card">
                     <!--Card content-->
                     <div class="card-body">
+                        <h5>
+                            @php
+                                $user_total = 0;
+                            @endphp
+                            @foreach ($users as $item)
+                                @php
+                                    if ($item->isUserOnline()) {
+                                        $user_total += 1;
+                                    }
+                                @endphp
+                            @endforeach
+                            User Total : {{ $users->total() }}
+                            <br>
+                            Total User Online :{{ $user_total }}
+                        </h5>
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -32,6 +47,8 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Role</th>
+                                    <th class="text-center">Online/Offline</th>
+                                    <th class="text-center">isBan/unBan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,12 +60,30 @@
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->role_as }}</td>
                                     <td>
-                                        <a href="{{ url('role-edit/'.$item->id) }}" class="badge badge-pill btn-primary px-3 py-2">EDIT</a>
+                                        @if ($item->isUserOnline())
+                                            <label class="py-2 px-3 badge btn-success">Online</label>
+                                        @else
+                                            <label class="py-2 px-3 badge btn-warning">Offline</label>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->isban == '0')
+                                            <label class="py-2 px-3 badge btn-primary">Not banned</label>
+                                        @elseif($item->isban == '1')
+                                            <label class="py-2 px-3 badge btn-danger">Banned</label>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('role-edit/' . $item->id) }}"
+                                            class="badge badge-pill btn-primary px-3 py-2">EDIT</a>
                                         <a href="" class="badge badge-pill btn-danger px-3 py-2">DELETE</a>
                                     </td>
                                 </tbody>
                             @endforeach
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {!! $users->links() !!}
+                        </div>
                     </div>
                 </div>
                 <!--/.Card-->

@@ -34,6 +34,13 @@
                                 </div>
                             @endif
                             <h4>Current Role : {{ $user_roles->role_as }}</h4>
+                            <h5>
+                                @if ($user_roles->isban == '0')
+                                    Is ban status : <label class="py-2 px-3 badge btn-primary">Not banned</label>
+                                @elseif($user_roles->isban == '1')
+                                    Is ban status : <label class="py-2 px-3 badge btn-danger">Banned</label>
+                                @endif
+                            </h5>
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -45,9 +52,16 @@
                             <div class="form-group">
                                 <select name="roles" class="form-control">
                                     <option value="">--Select Role--</option>
-                                    <option value="">Default</option>
+                                    <option value="user">User</option>
                                     <option value="admin">Admin</option>
                                     <option value="vendor">Vendor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="isban" class="form-control">
+                                    <option value="">--Select Ban and Un-ban--</option>
+                                    <option value="0">Un-ban</option>
+                                    <option value="1">Ban Now</option>
                                 </select>
                             </div>
                             <div class="form-group">

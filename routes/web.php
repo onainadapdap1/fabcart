@@ -22,7 +22,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth', 'isUser']], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 //if is admin and authenticate user, then return to dashboard
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard', function () {

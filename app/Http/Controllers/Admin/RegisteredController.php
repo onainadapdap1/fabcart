@@ -4,13 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Request;
 class  RegisteredController extends Controller
 {
     public function index() {
-        $users = User::paginate(2);
-        return view('admin.users.index')->with('users', $users);
+        // $users = User::paginate(2);
+        // $users = User::all();
+        if(Request::get('roles') != 'all') {
+            $users = User::where('role_as', Request::get('roles'))->get();
+            return view('admin.users.index')->with('users', $users);
+        } elseif(Request::get('roles') == 'all') {
+            $users = User::all();
+            return view('admin.users.index')->with('users', $users);
+        }
+
     }
     public function edit($id) {
         $user_roles =  User::find($id);

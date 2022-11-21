@@ -18,29 +18,61 @@
         <!-- Heading -->
 
         <!--Grid row-->
-        <div class="row wow fadeIn">
+        <div class="row ">
+            <div class="col-md-6">
+                <form action="{{ url('registered-user') }}" method="GET">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select name="roles" class="form-control">
+                                    @if (isset($_GET['roles']))
+                                        <option value="{{ $_GET['roles'] }}">{{ $_GET['roles'] }}</option>
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="vendor">Vendor</option>
+                                        <option value="all">All</option>
+                                    @else
+                                        <option value="all">All</option>
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="vendor">Vendor</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary py-2">Filter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h5>
+                        @php
+                            $user_total = 0;
+                        @endphp
+                        @foreach ($users as $item)
+                            @php
+                                if ($item->isUserOnline()) {
+                                    $user_total += 1;
+                                }
+                            @endphp
+                        @endforeach
+                        {{-- User Total : {{ $users->total() }} --}}
+                        {{-- <br> --}}
+                        Total User Online :{{ $user_total }}
+                    </h5>
+                </div>
+            </div>
             <!--Grid column-->
             <div class="col-md-12">
                 <!--Card-->
                 <div class="card">
                     <!--Card content-->
                     <div class="card-body">
-                        <h5>
-                            @php
-                                $user_total = 0;
-                            @endphp
-                            @foreach ($users as $item)
-                                @php
-                                    if ($item->isUserOnline()) {
-                                        $user_total += 1;
-                                    }
-                                @endphp
-                            @endforeach
-                            User Total : {{ $users->total() }}
-                            <br>
-                            Total User Online :{{ $user_total }}
-                        </h5>
-                        <table class="table table-bordered table-striped">
+
+                        <table id="datatable1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -81,9 +113,9 @@
                                 </tbody>
                             @endforeach
                         </table>
-                        <div class="d-flex justify-content-center">
+                        {{-- <div class="d-flex justify-content-center">
                             {!! $users->links() !!}
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!--/.Card-->
@@ -91,4 +123,12 @@
             <!--Grid column-->
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#datatable1').DataTable();
+        });
+    </script>
 @endsection

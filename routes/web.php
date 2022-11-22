@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\RegisteredController;
+use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -61,6 +63,10 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/category-delete/{id}', [CategoryController::class, 'delete']);
     Route::get('/category-deleted-records', [CategoryController::class, 'deleterecords']);
     Route::get('/category-re-store/{id}', [CategoryController::class, 'deletedrestore']);
+
+    // collection -> sub-category
+    Route::get('/sub-category', [SubcategoryController::class, 'index']);
+    Route::post('/sub-category-store', [SubcategoryController::class, 'store']);
 });
 
 // if is vendor and authenticate user, then return to vendor-dashboard

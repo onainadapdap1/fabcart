@@ -20,7 +20,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="{{ url('group') }}">Group</a></li>
                     <li><a class="dropdown-item" href="{{ url('category') }}">Category</a></li>
-                    <li><a class="dropdown-item" href="#">Sub Category</a></li>
+                    <li><a class="dropdown-item" href="{{ url('sub-category') }}">Sub Category</a></li>
                     <li><a class="dropdown-item" href="#">Products (Item)</a></li>
                 </ul>
             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\RegisteredController;
 use App\Http\Controllers\Frontend\UserController;
@@ -50,6 +51,10 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/group-delete/{id}', [GroupController::class, 'delete']);
     Route::get('/group-deleted-records', [GroupController::class, 'deletedrecords']);
     Route::get('/group-re-store/{id}', [GroupController::class, 'deletedrestore']);
+
+    // collection -> category
+    Route::get('/category', [CategoryController::class, 'index']);
+    Route::get('/category-add', [CategoryController::class, 'create']);
 });
 
 // if is vendor and authenticate user, then return to vendor-dashboard

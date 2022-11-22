@@ -37,7 +37,7 @@ class LoginController extends Controller
             return "/vendor-dashboard";
         }
         if (Auth::user()->role_as == "user") {
-            return "/home";
+            return "/";
         }
     }
 

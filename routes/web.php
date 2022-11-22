@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\RegisteredController;
+use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -24,7 +25,10 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth', 'isUser']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/my-profile', [UserController::class, 'myprofile']);
+    Route::post('/my-profile-update', [UserController::class, 'profileupdate']);
 });
+
 //if is admin and authenticate user, then return to dashboard
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard', function () {

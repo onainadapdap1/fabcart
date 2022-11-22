@@ -27,10 +27,10 @@
                                 <select name="roles" class="form-control">
                                     @if (isset($_GET['roles']))
                                         <option value="{{ $_GET['roles'] }}">{{ $_GET['roles'] }}</option>
+                                        <option value="all">All</option>
                                         <option value="user">User</option>
                                         <option value="admin">Admin</option>
                                         <option value="vendor">Vendor</option>
-                                        <option value="all">All</option>
                                     @else
                                         <option value="all">All</option>
                                         <option value="user">User</option>

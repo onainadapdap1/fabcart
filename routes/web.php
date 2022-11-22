@@ -43,7 +43,8 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 
     //collection -> group
     Route::get('/group', [GroupController::class, 'index']);
-    Route::get('/group-add', [GroupController::class, 'viewpage']);
+    Route::get('/group-add', [GroupController::class, 'create']);
+    Route::post('/group-store', [GroupController::class, 'store']);
 
 });
 

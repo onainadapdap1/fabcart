@@ -28,18 +28,20 @@
                                 <th>Show/Hide</th>
                                 <th>Action</th>
                             </thead>
+                            @foreach ($group as $item)
                             <tbody>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->description }}</td>
                                 <td>
-                                    <input type="checkbox">
+                                    <input type="checkbox" {{ $item->status == '1' ? 'checked' : ' ' }}>
                                 </td>
                                 <td>
-                                    <a href="" class="badge btn-primary">Edit</a>
-                                    <a href="" class="badge btn-danger">Delete</a>
+                                    <a href="" class="badge btn btn-primary">Edit</a>
+                                    <a href="" class="badge btn btn-danger">Delete</a>
                                 </td>
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>

@@ -2,6 +2,18 @@
 
 @section('content')
     <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+
         <!-- Heading -->
         <div class="card mb-4 wow fadeIn">
             <!--Card content-->
@@ -22,31 +34,34 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Name</label>
-                                    <input type="text" class="form-control" placeholder="enter name">
+                        <form action="{{ url('group-store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input type="text" name="name" class="form-control" placeholder="enter name">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Description</label>
+                                        <textarea rows="4" name="description" type="text" class="form-control" placeholder="enter description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Show / Hide</label>
+                                        <input type="checkbox" name="status" class="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Description</label>
-                                    <textarea rows="4" type="text" class="form-control" placeholder="enter description"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Show / Hide</label>
-                                    <input type="checkbox" class="" >
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@
                     <span>/</span>
                     <span>Group</span>
                     <span>/</span>
-                    <span>Add Group</span>
+                    <span>Edit Group</span>
                 </h6>
             </div>
         </div>
@@ -23,34 +23,37 @@
                 <div class="card">
                     <div class="card-body">
                         @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                        <form action="{{ url('group-store') }}" method="POST">
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <form action="{{ url('group-update/' . $group->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="enter name">
+                                        <input type="text" name="name" class="form-control"
+                                            value="{{ $group->name }}" placeholder="enter name">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">Description</label>
-                                        <textarea rows="4" name="description" type="text" class="form-control" placeholder="enter description"></textarea>
+                                        <textarea rows="4" name="description" type="text" class="form-control" placeholder="enter description">{{ $group->description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">Show / Hide</label>
-                                        <input type="checkbox" name="status" class="">
+                                        <input type="checkbox" name="status" {{ $group->status == '1' ? 'checked' : ' ' }}
+                                            class="">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-info">Update</button>
                                     </div>
                                 </div>
                             </div>

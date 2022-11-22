@@ -45,7 +45,11 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/group', [GroupController::class, 'index']);
     Route::get('/group-add', [GroupController::class, 'create']);
     Route::post('/group-store', [GroupController::class, 'store']);
-
+    Route::get('/group-edit/{id}', [GroupController::class, 'edit']);
+    Route::put('/group-update/{id}', [GroupController::class, 'update']);
+    Route::get('/group-delete/{id}', [GroupController::class, 'delete']);
+    Route::get('/group-deleted-records', [GroupController::class, 'deletedrecords']);
+    Route::get('/group-re-store/{id}', [GroupController::class, 'deletedrestore']);
 });
 
 // if is vendor and authenticate user, then return to vendor-dashboard

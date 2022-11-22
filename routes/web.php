@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     // collection -> category
     Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/category-add', [CategoryController::class, 'create']);
+    Route::post('/category-store', [CategoryController::class, 'store']);
 });
 
 // if is vendor and authenticate user, then return to vendor-dashboard

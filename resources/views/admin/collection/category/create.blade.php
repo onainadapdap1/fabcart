@@ -27,13 +27,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <form action="{{ url('category-store') }}" method="POST">
+                        <form action="{{ url('category-store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Group Id (Name)</label>
-                                        <select name="" class="form-control">
+                                        <select name="group_id" class="form-control">
                                             <option value="">Select</option>
                                             @foreach ($group as $group_item)
                                             <option value="{{ $group_item->id }}">{{ $group_item->name }}</option>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\RegisteredController;
 use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -35,9 +36,15 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
         return view('admin.dashboard');
     });
 
+    // registered user
     Route::get('/registered-user', [RegisteredController::class, 'index']);
     Route::get('/role-edit/{id}', [RegisteredController::class, 'edit']);
     Route::put('/role-update/{id}', [RegisteredController::class, 'updaterole']);
+
+    //collection -> group
+    Route::get('/group', [GroupController::class, 'index']);
+    Route::get('/group-add', [GroupController::class, 'viewpage']);
+
 });
 
 // if is vendor and authenticate user, then return to vendor-dashboard

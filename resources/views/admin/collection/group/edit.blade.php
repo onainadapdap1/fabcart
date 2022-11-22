@@ -11,7 +11,7 @@
                     <span>/</span>
                     <span>Group</span>
                     <span>/</span>
-                    <span>Edit Group</span>
+                    <span>Update Group</span>
                 </h6>
             </div>
         </div>

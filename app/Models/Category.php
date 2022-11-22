@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class Category extends Model
 {
@@ -17,4 +18,9 @@ class Category extends Model
         'icon',
         'status'
     ];
+
+    // belongsTo relation in laravel
+    public function group() {
+        return $this->belongsTo(Groups::class, 'group_id', 'id');
+    }
 }

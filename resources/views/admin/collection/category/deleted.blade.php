@@ -10,11 +10,8 @@
                     <a href="#">Collections</a>
                     <span>/</span>
                     <span>Category</span>
-                    {{-- <a href="{{ url('group-add') }}" class="btn btn-primary py-2">ADD Groups</a> --}}
-                    <h6 class="mb-0">
-                        <a href="{{ url('category-deleted-records') }}"class="btn btn-warning text-white py-2 float-right ml-2">Deleted Categories</a>
-                        <a href="{{ url('category-add') }}" class="btn btn-primary text-white py-2 float-right">ADD Category</a>
-                    </h6>
+                    <span>/</span>
+                    <span>Category deleted records</span>
                 </h6>
             </div>
         </div>
@@ -57,8 +54,7 @@
                                         <input type="checkbox" {{ $item->status == '1' ? 'checked' : ' ' }}>
                                     </td>
                                     <td>
-                                        <a href="{{ url('category-edit/' . $item->id) }}" class="badge btn btn-primary">Edit</a>
-                                        <a href="{{ url('category-delete/' . $item->id) }}" class="badge btn btn-danger">Delete</a>
+                                        <a href="{{ url('category-re-store/' . $item->id) }}" class="badge btn btn-success">Re-store</a>
                                     </td>
                                 </tbody>
                             @endforeach

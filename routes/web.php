@@ -67,6 +67,9 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     // collection -> sub-category
     Route::get('/sub-category', [SubcategoryController::class, 'index']);
     Route::post('/sub-category-store', [SubcategoryController::class, 'store']);
+    Route::get('/subcategory-edit/{id}', [SubcategoryController::class, 'edit']);
+    Route::put('/sub-category-update/{id}', [SubcategoryController::class, 'update']);
+    Route::get('/subcategory-delete/{id}', [SubcategoryController::class, 'delete']);
 });
 
 // if is vendor and authenticate user, then return to vendor-dashboard

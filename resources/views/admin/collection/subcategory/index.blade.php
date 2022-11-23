@@ -117,7 +117,7 @@
                                 <tbody>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->category_id }}</td>
+                                    <td>{{ $item->category->name }}</td>
                                     <td>{{ $item->description }}</td>
                                     <td>
                                         <img src="{{ asset('uploads/subcategory/' . $item->image) }}" width="50px"
@@ -128,9 +128,9 @@
                                         <input type="checkbox" {{ $item->status == '1' ? 'checked' : ' ' }}>
                                     </td>
                                     <td>
-                                        <a href="{{ url('category-edit/' . $item->id) }}"
+                                        <a href="{{ url('subcategory-edit/' . $item->id) }}"
                                             class="badge btn btn-primary">Edit</a>
-                                        <a href="{{ url('category-delete/' . $item->id) }}"
+                                        <a href="{{ url('subcategory-delete/' . $item->id) }}"
                                             class="badge btn btn-danger">Delete</a>
                                     </td>
                                 </tbody>

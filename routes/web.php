@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RegisteredController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Frontend\UserController;
@@ -70,6 +71,10 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/subcategory-edit/{id}', [SubcategoryController::class, 'edit']);
     Route::put('/sub-category-update/{id}', [SubcategoryController::class, 'update']);
     Route::get('/subcategory-delete/{id}', [SubcategoryController::class, 'delete']);
+
+    // collection -> products
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/add-products', [ProductController::class, 'create']);
 });
 
 // if is vendor and authenticate user, then return to vendor-dashboard

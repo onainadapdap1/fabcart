@@ -21,7 +21,7 @@
                     <li><a class="dropdown-item" href="{{ url('group') }}">Group</a></li>
                     <li><a class="dropdown-item" href="{{ url('category') }}">Category</a></li>
                     <li><a class="dropdown-item" href="{{ url('sub-category') }}">Sub Category</a></li>
-                    <li><a class="dropdown-item" href="#">Products (Item)</a></li>
+                    <li><a class="dropdown-item" href="{{ url('products') }}">Products (Item)</a></li>
                 </ul>
             </div>
         <a href="#" class="list-group-item list-group-item-action waves-effect">

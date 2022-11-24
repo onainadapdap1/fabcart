@@ -9,7 +9,7 @@
                 {{-- modal header --}}
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Sub-category</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">close</button>
                 </div>
                 {{-- modal body --}}
                 <form action="{{ url('sub-category-store') }}" method="POST" enctype="multipart/form-data">

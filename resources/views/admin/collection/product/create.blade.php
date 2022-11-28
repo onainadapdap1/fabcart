@@ -27,7 +27,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form action="{{ url('') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('store-product') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             {{-- navs tabs bootstrap --}}
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -49,12 +49,13 @@
                                 </li>
                             </ul>
                             <div class="tab-content border p-3" id="myTabContent">
+                                {{-- product --}}
                                 <div class="tab-pane fade show active" id="product" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row mt-3">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="">Product name</label>
-                                                <input type="text" class="form-control" placeholder="product name"
+                                                <input type="text" name="product_name" class="form-control" placeholder="product name"
                                                     required>
                                             </div>
                                         </div>
@@ -92,6 +93,13 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
+                                                <label for="">Sale Tag</label>
+                                                <input type="number" name="saletag" placeholder="original price"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
                                                 <label for="">Original Price</label>
                                                 <input type="number" name="original_price" placeholder="original price"
                                                     class="form-control">
@@ -120,6 +128,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- end product --}}
+
+                                {{-- description --}}
                                 <div class="tab-pane fade" id="descriptions" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row-mt-3">
                                         <div class="col-md-12">
@@ -142,6 +153,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- end description --}}
+
+                                {{-- seo --}}
                                 <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="contact-tab">
                                     <div class="row mt-3">
                                         <div class="col-md-12">
@@ -164,12 +178,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- end-seo --}}
+
+                                {{-- product status --}}
                                 <div class="tab-pane fade" id="status" role="tabpanel" aria-labelledby="contact-tab">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="">New Arrival</label>
-                                                <input type="checkbox" name="new_arrival" class="form-control">
+                                                <input type="checkbox" name="new_arrival_products" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -198,6 +215,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- end product status --}}
                             </div>
 
                             <div class="form-group mt-3 text-right">

@@ -63,7 +63,7 @@ class SubcategoryController extends Controller
         $subcategory->status = $request->input('status') == true ? '1' : '0';
         $subcategory->update();
 
-        return redirect('/sub-category')->with('status', 'Sub category ADDED successfully');
+        return redirect('/sub-category')->with('status', 'Sub category UPDATED successfully');
     }
 
     public function delete($id) {

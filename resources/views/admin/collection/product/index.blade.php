@@ -34,32 +34,30 @@
                             <thead>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Category Name</th>
+                                <th>Sub Category Name</th>
                                 <th>Image</th>
                                 <th>Show/Hide</th>
                                 <th>Action</th>
                             </thead>
-                            {{-- @foreach ($category as $item)
-                                <tbody>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->group->name }}</td>
-                                    <td>{{ $item->description }}</td>
-                                    <td>
-                                        <img src="{{ asset('uploads/categoryimage/' . $item->image) }}" width="50px" alt="">
-                                    </td>
-                                    <td>
-                                        <img src="{{ asset('uploads/categoryicon/' . $item->icon) }}" width="50px" alt="">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" {{ $item->status == '1' ? 'checked' : ' ' }}>
-                                    </td>
-                                    <td>
-                                        <a href="{{ url('category-edit/' . $item->id) }}" class="badge btn btn-primary">Edit</a>
-                                        <a href="{{ url('category-delete/' . $item->id) }}" class="badge btn btn-danger">Delete</a>
-                                    </td>
-                                </tbody>
-                            @endforeach --}}
+                            <tbody>
+                                @foreach ($products as $item)
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->subcategory->name }}</td>
+                                        <td>
+                                            <img src="{{ asset('uploads/products/'.$item->image) }}" width="60px" alt="">
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" {{ $item->status == '1' ? 'checked' : '0' }}>
+                                        </td>
+                                        <td>
+                                            <a href="" class="badge btn btn-primary">Edit</a>
+                                            <a href="" class="badge btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>

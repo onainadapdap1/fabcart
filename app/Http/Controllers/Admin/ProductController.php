@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index() {
-        return view('admin.collection.product.index');
+        $products = Product::where('status', '!=', '2')->get();
+        return view('admin.collection.product.index', compact('products'));
     }
     public function create() {
         $subcategory = Subcategory::where('status','!=', '2')->get();
@@ -57,7 +58,7 @@ class ProductController extends Controller
         $product->status = $request->input('status') == true ? '1' : '0';
 
         $product->save();
-        return redirect()->back()->with('status', 'Product ADDED successfully');
+        return redirect('/products')->with('status', 'Product ADDED successfully');
 
     }
 }

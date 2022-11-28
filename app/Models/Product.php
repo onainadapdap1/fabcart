@@ -36,6 +36,9 @@ class Product extends Model
         'meta_title',
         'meta_description',
         'meta_keyword',
-
     ];
+
+    public function subcategory() {
+        return $this->belongsTo(Subcategory::class, 'sub_category_id', 'id');
+    }
 }

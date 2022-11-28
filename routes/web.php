@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/add-products', [ProductController::class, 'create']);
     Route::post('/store-product', [ProductController::class, 'store']);
+    Route::get('/edit-products/{id}', [ProductController::class, 'edit']);
+    Route::put('/update-product/{id}', [ProductController::class, 'update']);
 });
 
 // if is vendor and authenticate user, then return to vendor-dashboard

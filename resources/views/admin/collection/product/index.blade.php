@@ -49,10 +49,10 @@
                                             <img src="{{ asset('uploads/products/'.$item->image) }}" width="60px" alt="">
                                         </td>
                                         <td>
-                                            <input type="checkbox" {{ $item->status == '1' ? 'checked' : '0' }}>
+                                            <input type="checkbox" disabled {{ $item->status == '1' ? 'checked' : '0' }}>
                                         </td>
                                         <td>
-                                            <a href="" class="badge btn btn-primary">Edit</a>
+                                            <a href="{{ url('edit-products/'.$item->id) }}" class="badge btn btn-primary">Edit</a>
                                             <a href="" class="badge btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
